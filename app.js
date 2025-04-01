@@ -1,10 +1,29 @@
-import express from 'express';
+import express from "express"
+import morgan from "morgan"
+import { fileURLToPath } from "url"
+import path from "path"
 
-const app = express();
-const port = 5000;
 
-app.use(express.static('public'));
-app.use(express.json());
+const app = express()
+const port = 5000
+
+app.use(morgan("dev"))
+app.use(express.json())
+
+// Obtén la ruta completa del archivo actual (app.js)
+const __filename = fileURLToPath(import.meta.url);
+
+// Usa path.dirname para obtener el directorio
+const __dirname = path.dirname(__filename);
+
+// Configura la carpeta 'public' para archivos estáticos
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.get("/", (req, res) => {
+    const filePath = path.join(__dirname, "public", "index.html");
+    res.sendFile(filePath);
+});
 
 app.post('/multiplicar', (req, res) => {
     const { matriz1, matriz2 } = req.body;

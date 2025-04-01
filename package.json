@@ -2,7 +2,7 @@
   "name": "mul_matrices",
   "version": "1.0.0",
   "main": "app.js",
-"module": "type",
+"type": "module",
   "scripts": {
     "dev": "node --watch app.js"
   },
