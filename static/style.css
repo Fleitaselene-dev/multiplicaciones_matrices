@@ -24,6 +24,12 @@ body{
        align-items: center;
        border-color: darksalmon;
     }
+    .caja-input{
+        gap: 15px;
+        display: flex;
+        justify-content: space-between;
+       margin: 5%;
+    }
     input{
         border-radius: 2%;
         border-color: darksalmon;
